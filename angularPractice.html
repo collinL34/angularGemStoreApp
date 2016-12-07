@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- calling out angular module and making it an angular app as is a key word when declaring a directive with alias store-->
+<html ng-app="store">
+
+<head>
+    <title>angular practice</title>
+    <!-- link to bootstrap min css file -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+</head>
+<!-- main controller for this body tag and everything inside it -->
+<body ng-controller='StoreController as store'>
+    <!-- says hide this element if it is a falsey value -->
+    <div ng-hide='store.product.soldOut'>
+        <!-- a looping directive for all products -->
+        <div ng-repeat="product in store.products | orderBy:'-price'">
+        <!-- new controller for our tabs/panels -->
+            <section ng-controller='PanelController as panel'>
+                <ul class="nav nav-pills">
+
+                        <!-- ajaxyy directive that adds the class -->
+                    <li ng-class="{ active: panel.isSelected(1) }">
+                        <!-- activates active class when clicked -->
+                        <a href ng-click="panel.selectTab(1)">description</a>
+                    </li>
+                    <li ng-class="{ active: panel.isSelected(2) }">
+                        <a href ng-click='panel.selectTab(2)'>specifictions</a>
+                    </li>
+                    <li ng-class='{ active: panel.isSelected(3) }'>
+                        <a href ng-click="panel.selectTab(3)">reviews</a>
+                    </li>
+                </ul>
+                <!-- data to show when on this tab using directive functions from panelcontroller -->
+                <div class='panel' ng-show='panel.isSelected(1)'>
+                    <h4>Description</h4>
+                    <p> {{ product.description }} </p>
+                </div>
+                <div class='panel' ng-show='panel.isSelected(2)'>
+                    <h4>specifications</h4>
+                    <blockquote>None Yet</blockquote>
+                </div>
+                <div class='panel' ng-show='panel.isSelected(3)'>
+                    <h4>Reviews</h4>
+                    <blockquote>None Yet</blockquote>
+                </div>
+
+            </section>
+                <!-- shows product full image as source-->
+            <img ng-src="{{ product.images[0].full }}" />
+                <!-- calling js built in function on expressions values-->
+            <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
+                <!-- angular directive function that shows if value of forsale value is true of product -->
+            <button ng-show='product.forSale'>add to my cart</button>
+        </div>
+    </div>
+        <!-- link to angular file -->
+    <script type="text/javascript" src='angular-1.6.0-rc.2/angular.min.js'></script>
+        <!-- script tag to link our angular module -->
+    <script type="text/javascript" src='app.js'></script>
+</body>
+
+</html>
+
+app.controller('StoreController', function Gem(args) {
+        this.name = args['name'],
+        this.price = args['price'],
+        this.description = args['description'],
+        this.forSale = args['forSale'],
+        this.soldOut = args['soldOut'],
+        this.images = args['images']
+    });
+
+    // declaring gems nested objects within array
+    var gems = new Gem({
+        name: 'gem stone',
+        price: 2.86,
+        description: 'this is a way better description of this gem thne what was there before',
+        forSale: true,
+        soldOut: false,
+        images: [
+        {
+          full: '../../Desktop/gem.gif'
+        }]
+    });
+
+     var gemer = new Gem({
+        name: 'gem stone',
+        price: 100,
+        description: 'this is my favorite gem it is the most amazing omg i love this gem',
+        forSale: true,
+        soldOut: false,
+        images: [
+        {
+          full: '../../Desktop/gem2.gif'
+        }]
+    });
+
