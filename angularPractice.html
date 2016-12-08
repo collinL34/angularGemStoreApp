@@ -43,30 +43,31 @@
                     <blockquote>None Yet</blockquote>
                 </div>
                 <div class='panel' ng-show='panel.isSelected(3)'>
-                                <h4>Reviews</h4>
-                                <blockquote ng-repeat='review in product.reviews'>
-                                    <b>Stars: {{review.stars}}</b> 
-                                    <b>{{review.body}}</b>
-                                    <cite>{{review.author}}</cite>
-                                </blockquote>
-                        <form name='reviewForm'>
+                    <h4>Reviews</h4>
+                    <blockquote ng-repeat='review in product.reviews'>
+                        <b>Stars: {{review.stars}}</b>
+                        <b>{{review.body}}</b>
+                        <cite>{{review.author}}</cite>
+                    </blockquote>
+                    <form name='reviewForm'>
                         <blockquote>
-                                    <b>Stars: {{review.stars}}</b> 
-                                    <b>{{review.body}}</b>
-                                    <cite>{{review.author}}</cite>
-                                </blockquote>
-                                <select ng-model='review.stars'>
-                                    <option value='1'>1 star</option>
-                                    <option value='2'>2 star</option>
-                                    <option value='3'>3 star</option>
-                                    <option value='4'>4 star</option>
-                                    <option value='5'>5 star</option>
-                                </select>
-                                <textarea ng-model='review.body'></textarea> 
-                                <label>by:</label>
-                                <input ng-model='review.author' type="email" />
-                                <input type="submit" value='submit' />
-                        </form>
+                            <b>Stars: {{review.stars}}</b>
+                            <b>{{review.body}}</b>
+                            <cite>{{review.author}}</cite>
+                        </blockquote>
+                        <select ng-model='review.stars'>
+                            <option value='1'>1 star</option>
+                            <option value='2'>2 star</option>
+                            <option value='3'>3 star</option>
+                            <option value='4'>4 star</option>
+                            <option value='5'>5 star</option>
+                        </select>
+                        <textarea ng-model='review.body'></textarea>
+                        <label>by:</label>
+                        <input ng-model='review.author' type="email" />
+                        <input ng-model='review.terms' type="checkbox" /> I agree to the terms
+                        <input type="submit" value='submit' />
+                    </form>
                 </div>
             </section>
             <!-- shows product full image as source-->

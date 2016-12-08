@@ -17,7 +17,9 @@
             reviews: [{
                 stars: 5,
                 body: 'i love this gem sooo much',
-                author: 'collin@mgial.com'
+                author: 'collin@mgial.com',
+                color: undefined,
+                terms: true
             }]
         }, {
             name: 'gem stone',
@@ -31,7 +33,9 @@
             reviews: [{
                 stars: 3,
                 body: 'i love this gem too',
-                author: 'collin@mgial.com'
+                author: 'collin@mgial.com',
+                color: undefined,
+                terms: true
             }]
         }];
     });
