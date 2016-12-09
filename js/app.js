@@ -1,9 +1,9 @@
-(function() {
+( function() {
     // declaring a angular module
-    var app = angular.module('store', []);
+    var app = angular.module( 'store', [] );
 
     // create controller for store module
-    app.controller('StoreController', function() {
+    app.controller( 'StoreController', function() {
         this.products = [
         {
             name: 'gem stone',
@@ -14,7 +14,8 @@
             images: [{
                 full: 'images/gem.gif'
             }],
-            reviews: [{
+            reviews: [
+            {
                 stars: 5,
                 body: 'i love this gem sooo much',
                 author: 'collin@mgial.com',
@@ -27,7 +28,8 @@
             description: 'this is my favorite gem it is the most amazing omg i love this gem',
             forSale: true,
             soldOut: false,
-            images: [{
+            images: [
+            {
                 full: 'images/gem2.gif'
             }],
             reviews: [{
@@ -38,18 +40,31 @@
                 terms: true
             }]
         }];
+
     });
 
-    // creating 
-    app.controller('PanelController', function() {
+    app.controller( 'PanelController', function() {
         this.tab = 1;
         // panelcontroller method
-        this.selectTab = function(setTab) {
+        this.selectTab = function( setTab ) {
             this.tab = setTab;
         };
         // another panelcontroller method
-        this.isSelected = function(selectTab) {
+        this.isSelected = function( selectTab ) {
             return this.tab === selectTab;
+        };
+    });
+
+    app.controller('ReviewController', function() {
+        this.review = {};
+
+        this.addReview = function( product ) {
+            if ( this.review.terms !== undefined ) {
+                product.reviews.push( this.review );
+                this.review = {};
+            } else {
+                alert( 'you trypping you forgot to accept asshole!!' );
+            };
         };
     });
 

@@ -49,25 +49,28 @@
                         <b>{{review.body}}</b>
                         <cite>{{review.author}}</cite>
                     </blockquote>
-                    <form name='reviewForm'>
+
+                    <form name='reviewForm' ng-controller='ReviewController as reviewCntrl' ng-submit='reviewCntrl.addReview(product)'>
+
                         <blockquote>
-                            <b>Stars: {{review.stars}}</b>
-                            <b>{{review.body}}</b>
-                            <cite>{{review.author}}</cite>
+                            <b>Stars: {{reviewCntrl.review.stars}}</b>
+                            <b>{{reviewCntrl.review.body}}</b>
+                            <cite>{{reviewCntrl.review.author}}</cite>
                         </blockquote>
-                        <select ng-model='review.stars'>
+                        <select ng-model='reviewCntrl.review.stars'>
                             <option value='1'>1 star</option>
                             <option value='2'>2 star</option>
                             <option value='3'>3 star</option>
                             <option value='4'>4 star</option>
                             <option value='5'>5 star</option>
                         </select>
-                        <textarea ng-model='review.body'></textarea>
+                        <textarea ng-model='reviewCntrl.review.body'></textarea>
                         <label>by:</label>
-                        <input ng-model='review.author' type="email" />
-                        <input ng-model='review.terms' type="checkbox" /> I agree to the terms
-                        <input type="submit" value='submit' />
+                        <input ng-model='reviewCntrl.review.author' type="email" />
+                        <input ng-model='reviewCntrl.review.terms' type="checkbox" /> I agree to the terms
+                        <input ng-click='reviewCntrl.review.addReview()' type="submit" value='submit' />
                     </form>
+
                 </div>
             </section>
             <!-- shows product full image as source-->
