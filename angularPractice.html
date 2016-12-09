@@ -4,12 +4,16 @@
 
 <head>
     <title>angular practice</title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <!-- semantic ui js link -->
+    <script src="semantic/dist/semantic.min.js"></script>
     <!-- link to bootstrap min css file -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <!-- link to angular file -->
     <script type="text/javascript" src='js/angular/angular.min.js'></script>
     <!-- script tag to link our angular module -->
     <script type="text/javascript" src='js/app.js'></script>
+    <!-- semantic ui css link -->
 </head>
 <!-- main controller for this body tag and everything inside it -->
 
@@ -68,7 +72,7 @@
                         <label>by:</label>
                         <input ng-model='reviewCntrl.review.author' type="email" />
                         <input ng-model='reviewCntrl.review.terms' type="checkbox" /> I agree to the terms
-                        <input ng-click='reviewCntrl.review.addReview()' type="submit" value='submit' />
+                        <button ng-click='reviewCntrl.review.addReview(product)' type="submit" class="btn btn-danger">Review</button>
                     </form>
 
                 </div>
