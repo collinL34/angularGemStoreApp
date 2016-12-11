@@ -14,6 +14,9 @@
     <!-- script tag to link our angular module -->
     <script type="text/javascript" src='js/app.js'></script>
     <!-- semantic ui css link -->
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <!-- semantic ui js link -->
+    <script src="semantic/dist/semantic.min.js"></script>
 </head>
 <!-- main controller for this body tag and everything inside it -->
 
@@ -54,65 +57,28 @@
                         <cite>{{review.author}}</cite>
                     </blockquote>
 
-                   <!--  <form name='reviewForm' ng-controller='ReviewController as reviewCntrl' ng-submit='reviewCntrl.addReview(product)'>
+                    <form name='reviewForm' ng-controller='ReviewController as reviewCntrl' ng-submit='reviewForm.$valid && reviewCntrl.addReview(product)' novalidate>
 
                         <blockquote>
                             <b>Stars: {{reviewCntrl.review.stars}}</b>
                             <b>{{reviewCntrl.review.body}}</b>
                             <cite>{{reviewCntrl.review.author}}</cite>
                         </blockquote>
-                        <select ng-model='reviewCntrl.review.stars'>
+                        <select ng-model='reviewCntrl.review.stars' required>
                             <option value='1'>1 star</option>
                             <option value='2'>2 star</option>
                             <option value='3'>3 star</option>
                             <option value='4'>4 star</option>
                             <option value='5'>5 star</option>
                         </select>
-                        <textarea ng-model='reviewCntrl.review.body'></textarea>
+                        <textarea ng-model='reviewCntrl.review.body' required></textarea>
                         <label>by:</label>
-                        <input ng-model='reviewCntrl.review.author' type="email" />
-                        <input ng-model='reviewCntrl.review.terms' type="checkbox" /> I agree to the terms
+                        <input ng-model='reviewCntrl.review.author' type="email" required="" />
+                        <div> reviewForm is {{reviewForm.$valid}}</div>
+                        <input ng-model='reviewCntrl.review.terms' type="checkbox" required="" /> I agree to the terms
                         <button ng-click='reviewCntrl.review.addReview(product)' type="submit" class="btn btn-danger">Review</button>
                     </form>
- -->
-                     <div class="form-group has-success">
-                      <label class="control-label" for="inputSuccess1">Input with success</label>
-                      <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
-                      <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-                    </div>
-                    <div class="form-group has-warning">
-                      <label class="control-label" for="inputWarning1">Input with warning</label>
-                      <input type="text" class="form-control" id="inputWarning1">
-                    </div>
-                    <div class="form-group has-error">
-                      <label class="control-label" for="inputError1">Input with error</label>
-                      <input type="text" class="form-control" id="inputError1">
-                    </div>
-                    <div class="has-success">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" id="checkboxSuccess" value="option1">
-                          Checkbox with success
-                        </label>
-                      </div>
-                    </div>
-                    <div class="has-warning">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" id="checkboxWarning" value="option1">
-                          Checkbox with warning
-                        </label>
-                      </div>
-                    </div>
-                    <div class="has-error">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" id="checkboxError" value="option1">
-                          Checkbox with error
-                        </label>
-                      </div>
-                    </div>
-                </div>
+
             </section>
             <!-- shows product full image as source-->
             <img ng-src="{{ product.images[0].full }}" />
