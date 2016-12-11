@@ -19,14 +19,14 @@
     <div ng-hide='store.products.soldOut'>
         <!-- a looping directive for all products -->
         <div ng-repeat="product in store.products | orderBy:'-price'">
-            <!-- new controller for our tabs/panels -->
-            <div ng-include="'panels.html'"></div>
-        <!-- shows product full image as source-->
-        <img ng-src="{{ product.images[0].full }}" />
-        <!-- calling js built in function on expressions values-->
-        <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
-        <!-- angular directive function that shows if value of forsale value is true of product -->
-        <button ng-show='product.forSale'>add to my cart</button>
+            <!-- custom directive for panels html template -->
+            <panels></panels>
+            <!-- shows product full image as source-->
+            <img ng-src="{{ product.images[0].full }}" />
+            <!-- calling js built in function on expressions values-->
+            <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
+            <!-- angular directive function that shows if value of forsale value is true of product -->
+            <button ng-show='product.forSale'>add to my cart</button>
         </div>
     </div>
 </body>
