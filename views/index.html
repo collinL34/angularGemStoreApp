@@ -4,12 +4,8 @@
 
 <head>
     <title>angular practice</title>
-    <!-- link to bootstrap min css file -->
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
-    <!-- link to angular file -->
-    <script type="text/javascript" src='../js/angular/angular.min.js'></script>
-    <!-- script tag to link our angular module -->
-    <script type="text/javascript" src='../js/app.js'></script>
+    <!-- link to bootstrap min css file -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <!-- main controller for this body tag and everything inside it -->
@@ -20,15 +16,21 @@
         <!-- a looping directive for all products -->
         <div ng-repeat="product in store.products | orderBy:'-price'">
             <!-- custom directive for panels html template -->
-            <panels></panels>
+            <product-panels></product-panels>
             <!-- shows product full image as source-->
-            <img ng-src="{{ product.images[0].full }}" />
+            <img ng-src="{{ product.images[0] }}" />
             <!-- calling js built in function on expressions values-->
             <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
             <!-- angular directive function that shows if value of forsale value is true of product -->
             <button ng-show='product.forSale'>add to my cart</button>
         </div>
     </div>
+    <!-- link to angular file -->
+    <script type="text/javascript" src='../js/angular/angular.min.js'></script>
+    <!-- script tag to link our store angular module -->
+    <script type="text/javascript" src='../js/app.js'></script>
+    <!-- script tag to link our store products angular module -->
+    <script type="text/javascript" src='../js/products.js'></script>
 </body>
 
 </html>

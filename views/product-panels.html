@@ -1,4 +1,4 @@
-<section ng-controller='PanelController as panel'>
+<section>
     <ul class="nav nav-pills">
         <!-- ajaxyy directive that adds the class -->
         <li ng-class="{ active: panel.isSelected(1) }">
@@ -28,5 +28,6 @@
             <b>{{review.body}}</b>
             <cite>{{review.author}}</cite>
         </blockquote>
-        <div ng-include="'review-form.html'"></div>
+        <!-- <div ng-include="'review-form.html'"></div> -->
+        <review-form></review-form>
 </section>
