@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <!-- semantic ui js link -->
     <script src="semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <!-- main controller for this body tag and everything inside it -->
 
@@ -26,66 +27,13 @@
         <!-- a looping directive for all products -->
         <div ng-repeat="product in store.products | orderBy:'-price'">
             <!-- new controller for our tabs/panels -->
-            <section ng-controller='PanelController as panel'>
-                <ul class="nav nav-pills">
-                    <!-- ajaxyy directive that adds the class -->
-                    <li ng-class="{ active: panel.isSelected(1) }">
-                        <!-- activates active class when clicked -->
-                        <a href ng-click="panel.selectTab(1)">description</a>
-                    </li>
-                    <li ng-class="{ active: panel.isSelected(2) }">
-                        <a href ng-click='panel.selectTab(2)'>specifictions</a>
-                    </li>
-                    <li ng-class='{ active: panel.isSelected(3) }'>
-                        <a href ng-click="panel.selectTab(3)">reviews</a>
-                    </li>
-                </ul>
-                <!-- data to show when on this tab using directive functions from panelcontroller -->
-                <div class='panel' ng-show='panel.isSelected(1)'>
-                    <h4>Description</h4>
-                    <p> {{ product.description }} </p>
-                </div>
-                <div class='panel' ng-show='panel.isSelected(2)'>
-                    <h4>specifications</h4>
-                    <blockquote>None Yet</blockquote>
-                </div>
-                <div class='panel' ng-show='panel.isSelected(3)'>
-                    <h4>Reviews</h4>
-                    <blockquote ng-repeat='review in product.reviews'>
-                        <b>Stars: {{review.stars}}</b>
-                        <b>{{review.body}}</b>
-                        <cite>{{review.author}}</cite>
-                    </blockquote>
-
-                    <form name='reviewForm' ng-controller='ReviewController as reviewCntrl' ng-submit='reviewForm.$valid && reviewCntrl.addReview(product)' novalidate>
-
-                        <blockquote>
-                            <b>Stars: {{reviewCntrl.review.stars}}</b>
-                            <b>{{reviewCntrl.review.body}}</b>
-                            <cite>{{reviewCntrl.review.author}}</cite>
-                        </blockquote>
-                        <select ng-model='reviewCntrl.review.stars' required>
-                            <option value='1'>1 star</option>
-                            <option value='2'>2 star</option>
-                            <option value='3'>3 star</option>
-                            <option value='4'>4 star</option>
-                            <option value='5'>5 star</option>
-                        </select>
-                        <textarea ng-model='reviewCntrl.review.body' required></textarea>
-                        <label>by:</label>
-                        <input ng-model='reviewCntrl.review.author' type="email" required="" />
-                        <div> reviewForm is {{reviewForm.$valid}}</div>
-                        <input ng-model='reviewCntrl.review.terms' type="checkbox" required="" /> I agree to the terms
-                        <button ng-click='reviewCntrl.review.addReview(product)' type="submit" class="btn btn-danger">Review</button>
-                    </form>
-
-            </section>
-            <!-- shows product full image as source-->
-            <img ng-src="{{ product.images[0].full }}" />
-            <!-- calling js built in function on expressions values-->
-            <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
-            <!-- angular directive function that shows if value of forsale value is true of product -->
-            <button ng-show='product.forSale'>add to my cart</button>
+            <section ng-include="'views/panels.html'"></section>
+        <!-- shows product full image as source-->
+        <img ng-src="{{ product.images[0].full }}" />
+        <!-- calling js built in function on expressions values-->
+        <h1> {{ product.name | uppercase }} {{ product.price | currency }} </h1>
+        <!-- angular directive function that shows if value of forsale value is true of product -->
+        <button ng-show='product.forSale'>add to my cart</button>
         </div>
     </div>
 </body>
