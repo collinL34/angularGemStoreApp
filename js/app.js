@@ -12,7 +12,7 @@
             forSale: true,
             soldOut: false,
             images: [{
-                full: 'images/gem.gif'
+                full: '../images/gem.gif'
             }],
             reviews: [
             {
@@ -30,7 +30,7 @@
             soldOut: false,
             images: [
             {
-                full: 'images/gem2.gif'
+                full: '../images/gem2.gif'
             }],
             reviews: [{
                 stars: 3,
