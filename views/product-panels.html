@@ -1,0 +1,33 @@
+<section>
+    <ul class="nav nav-pills">
+        <!-- ajaxyy directive that adds the class -->
+        <li ng-class="{ active: panel.isSelected(1) }">
+            <!-- activates active class when clicked -->
+            <a href ng-click="panel.selectTab(1)">description</a>
+        </li>
+        <li ng-class="{ active: panel.isSelected(2) }">
+            <a href ng-click='panel.selectTab(2)'>specifictions</a>
+        </li>
+        <li ng-class='{ active: panel.isSelected(3) }'>
+            <a href ng-click="panel.selectTab(3)">reviews</a>
+        </li>
+    </ul>
+    <!-- data to show when on this tab using directive functions from panelcontroller -->
+    <div class='panel' ng-show='panel.isSelected(1)'>
+        <h4>Description</h4>
+        <p> {{ product.description }} </p>
+    </div>
+    <div class='panel' ng-show='panel.isSelected(2)'>
+        <h4>specifications</h4>
+        <blockquote>None Yet</blockquote>
+    </div>
+    <div class='panel' ng-show='panel.isSelected(3)'>
+        <h4>Reviews</h4>
+        <blockquote ng-repeat='review in product.reviews'>
+            <b>Stars: {{review.stars}}</b>
+            <b>{{review.body}}</b>
+            <cite>{{review.author}}</cite>
+        </blockquote>
+        <!-- <div ng-include="'review-form.html'"></div> -->
+        <review-form></review-form>
+</section>
